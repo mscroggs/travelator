@@ -88,7 +88,8 @@ function tick_travelator() {
     document.getElementById("time1").style.left = document.getElementById("runner1").style.left
 
     for (var i = 0; i < 10; i++) {
-        document.getElementById("tblip" + i).style.left = 25 + (i * 70 + time * tspeed / 1000) % 700
+        document.getElementById("tblip" + i).style.left = 25 + (i * 70 + time * tspeed / 1000) % 700 + "px"
+        console.log(tspeed)
     }
 
 }
@@ -97,13 +98,13 @@ function update_numbers() {
     var tsp = document.getElementById("tspeed").value / 1
     var rsp = document.getElementById("rspeed").value / 1
 
-    if(Number.isInteger(tsp)){
+    if(Number.isInteger(tsp) && tsp >= 0){
         tspeed = tsp
         document.getElementById("tspeed").style.backgroundColor = "white"
     } else {
         document.getElementById("tspeed").style.backgroundColor = "red"
     }
-    if(Number.isInteger(rsp)){
+    if(Number.isInteger(rsp) && rsp >= 0){
         rspeed = rsp
         document.getElementById("rspeed").style.backgroundColor = "white"
     } else {
