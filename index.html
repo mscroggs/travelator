@@ -1,0 +1,19 @@
+<html>
+<head>
+<title>Travelator</title>
+<script type='text/javascript' src='travelator.js'></script>
+</head>
+<body>
+<div id='travelator-container' style='text-align:center;margin:auto'>
+<div id='travelator'></div>
+</div>
+<div id='travelator-control-container' style='text-align:center;margin:auto'>
+Travelator speed: <input type="text" id="tspeed" value="0" size="5" onchange='update_numbers()'><br />
+Running speed: <input type="text" id="rspeed" value="0" size="5" onchange='update_numbers()'><br />
+<button onclick="start_travelator()">Go!</button>
+</div>
+<script type='text/javascript'>
+setup_travelator()
+</script>
+</body>
+</html>
