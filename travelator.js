@@ -119,6 +119,10 @@ function update_numbers() {
     if(Number.isInteger(rsp) && rsp >= 0){
         rspeed = rsp
         document.getElementById("rspeed").style.backgroundColor = "white"
+        if (running1[2] != "none" && time > running1[2]) {
+            running1[4] = rsp
+        }
+
     } else {
         document.getElementById("rspeed").style.backgroundColor = "red"
     }
