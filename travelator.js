@@ -50,11 +50,11 @@ function tick_travelator() {
 
     if (time < running0[1]) {
         document.getElementById("time0").innerHTML = seconds + "." + tenths + "s"
-        document.getElementById("runner0").style.left = (time - running0[0]) * running0[0][3] / 1000 + "px"
+        document.getElementById("runner0").style.left = (time - running0[0]) * running0[3] / 1000 + "px"
         document.getElementById("runner0").style.objectPosition = (-50 * (1 + (10 * seconds + tenths)%4)) + "px 0px"
     } else if (time < running0[2]) {
         document.getElementById("time0").innerHTML = seconds + "." + tenths + "s"
-        document.getElementById("runner0").style.left = (700 - ((time - running0[1]) * running0[0][3]) / 1000) + "px"
+        document.getElementById("runner0").style.left = (700 - ((time - running0[1]) * running0[3]) / 1000) + "px"
         document.getElementById("runner0").style.objectPosition = (-150 + 50 * ((10 * seconds + tenths)%4)) + "px -75px"
     } else {
         document.getElementById("runner0").style.left = "0px"
@@ -68,12 +68,12 @@ function tick_travelator() {
 
     if (time < running1[1]) {
         document.getElementById("time1").innerHTML = seconds + "." + tenths + "s"
-        document.getElementById("runner1").style.left = (time - running1[0]) * (running1[0][3] + running1[0][4]) / 1000 + "px"
+        document.getElementById("runner1").style.left = (time - running1[0]) * (running1[3] + running1[4]) / 1000 + "px"
         document.getElementById("runner1").style.objectPosition = (-50 * (1 + (10 * seconds + tenths)%4)) + "px 0px"
     } else if (running1[2] == "none" || time < running1[2]) {
         document.getElementById("time1").innerHTML = seconds + "." + tenths + "s"
-        if (running1[0][3] > running1[0][4]) {
-            document.getElementById("runner1").style.left = (700 - ((time - running1[1]) * (running1[0][3] - running1[0][4])) / 1000) + "px"
+        if (running1[3] > running1[4]) {
+            document.getElementById("runner1").style.left = (700 - ((time - running1[1]) * (running1[3] - running1[4])) / 1000) + "px"
         } else {
             document.getElementById("runner1").style.left = "700px"
         }
@@ -90,7 +90,7 @@ function tick_travelator() {
 
     var infty_used = false
     for (var i = 0; i < 10; i++) {
-        left = (i * 70 + time * running1[0][4] / 1000) % 700
+        left = (i * 70 + time * running1[4] / 1000) % 700
         document.getElementById("tblip" + i).style.left = (25 + left) + "px"
         if (left + 12 > 700) {
             document.getElementById("tblip" + i).style.width = (700 - left) + "px"
