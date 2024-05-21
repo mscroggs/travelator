@@ -22,6 +22,7 @@ function setup_travelator() {
     for (var i = 0; i < 10; i++) {
         content += "<div id='tblip"+i+"' style='background-color:black;width:12px;height:10px;position:absolute;top:215px;left:" + (25 + i * 70) + "px'></div>"
     }
+    content += "<div id='tblip-infty' style='background-color:black;width:0px;height:10px;position:absolute;top:215px;left:25px'></div>"
 
     document.getElementById("travelator").innerHTML = content
     document.getElementById("tspeed").value = tspeed
@@ -87,11 +88,22 @@ function tick_travelator() {
     }
     document.getElementById("time1").style.left = document.getElementById("runner1").style.left
 
+    var infty_used = false
     for (var i = 0; i < 10; i++) {
-        document.getElementById("tblip" + i).style.left = 25 + (i * 70 + time * tspeed / 1000) % 700 + "px"
-        console.log(tspeed)
+        left = (i * 70 + time * tspeed / 1000) % 700
+        document.getElementById("tblip" + i).style.left = (25 + left) + "px"
+        if (left + 12 > 700) {
+            document.getElementById("tblip" + i).style.width = (700 - left) + "px"
+            document.getElementById("tblip-infty").style.width = (left - 688) + "px"
+            document.getElementById("tblip-infty").style.display = "block"
+            infty_used = true
+        } else {
+            document.getElementById("tblip" + i).style.width = "12px"
+        }
     }
-
+    if (!infty_used) {
+        document.getElementById("tblip-infty").style.display = "none"
+    }
 }
 
 function update_numbers() {
