@@ -113,16 +113,15 @@ function update_numbers() {
     if(Number.isInteger(tsp) && tsp >= 0){
         tspeed = tsp
         document.getElementById("tspeed").style.backgroundColor = "white"
+        if (running1[2] != "none" && Date.now() > running1[2]) {
+            running1[4] = tsp
+        }
     } else {
         document.getElementById("tspeed").style.backgroundColor = "red"
     }
     if(Number.isInteger(rsp) && rsp >= 0){
         rspeed = rsp
         document.getElementById("rspeed").style.backgroundColor = "white"
-        if (running1[2] != "none" && Date.now() > running1[2]) {
-            running1[4] = rsp
-        }
-
     } else {
         document.getElementById("rspeed").style.backgroundColor = "red"
     }
