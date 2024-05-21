@@ -72,11 +72,7 @@ function tick_travelator() {
         document.getElementById("runner1").style.objectPosition = (-50 * (1 + (10 * seconds + tenths)%4)) + "px 0px"
     } else if (running1[2] == "none" || time < running1[2]) {
         document.getElementById("time1").innerHTML = seconds + "." + tenths + "s"
-        if (running1[3] > running1[4]) {
-            document.getElementById("runner1").style.left = (700 - ((time - running1[1]) * (running1[3] - running1[4])) / 1000) + "px"
-        } else {
-            document.getElementById("runner1").style.left = "700px"
-        }
+        document.getElementById("runner1").style.left = (700 - ((time - running1[1]) * (running1[3] - running1[4])) / 1000) + "px"
         document.getElementById("runner1").style.objectPosition = (-150 + 50 * ((10 * seconds + tenths)%4)) + "px -75px"
     } else {
         document.getElementById("runner1").style.left = "0px"
